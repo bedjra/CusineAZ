@@ -1,7 +1,5 @@
 # CuisineAZ
 
-## Aperçu du projet
-
 CuisineAZ est une interface web moderne dédiée à la découverte et à la présentation de recettes culinaires.  
 Le projet met en avant un design responsive, une navigation fluide et une expérience utilisateur agréable, permettant aux visiteurs d’explorer différentes catégories de plats et inspirations gastronomiques.
 
