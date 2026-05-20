@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuisineAZ — Recettes, Concours & Communauté</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF8F3;
+  --parchment: #F3EFE4;
+  --deep: #0F0C07;
+  --ink: #1C1610;
+  --ink-mid: #3D3526;
+  --ink-soft: #6B5F4A;
+  --ember: #C4411C;
+  --ember2: #E25928;
+  --ember-pale: #FDF0EB;
+  --gold: #B8841F;
+  --gold2: #D4A535;
+  --gold-pale: #FDF6E4;
+  --sage: #4A6741;
+  --sage-pale: #EBF2EA;
+  --border: rgba(28,22,16,0.1);
+  --border-soft: rgba(28,22,16,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--parchment);}
+::-webkit-scrollbar-thumb{background:var(--ember);border-radius:3px;}
+
+/* ═══════════════ HEADER ═══════════════ */
+header{
+  position:sticky;top:0;z-index:200;
+  background:var(--deep);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.header-top{
+  max-width:1280px;margin:0 auto;padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;gap:2rem;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.75rem;font-weight:900;
+  color:#fff;letter-spacing:-1px;
+  text-decoration:none;flex-shrink:0;
+}
+.logo em{color:var(--ember2);font-style:italic;}
+.header-search{
+  flex:1;max-width:480px;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:50px;padding:0 18px;height:42px;
+  transition:.2s;
+}
+.header-search:focus-within{border-color:var(--ember2);background:rgba(255,255,255,0.09);}
+.header-search input{
+  background:transparent;border:none;outline:none;
+  color:#fff;font-size:.875rem;width:100%;
+  font-family:'Outfit',sans-serif;
+}
+.header-search input::placeholder{color:rgba(255,255,255,.3);}
+.header-search svg{color:rgba(255,255,255,.3);flex-shrink:0;}
+.header-nav{display:flex;gap:.25rem;align-items:center;}
+.header-nav a{
+  color:rgba(255,255,255,.5);text-decoration:none;
+  font-size:.8rem;font-weight:500;letter-spacing:.3px;
+  padding:6px 14px;border-radius:6px;
+  transition:.2s;white-space:nowrap;
+}
+.header-nav a:hover{color:#fff;background:rgba(255,255,255,.07);}
+.header-nav a.active{color:var(--ember2);}
+.nav-bar{
+  background:rgba(255,255,255,0.03);
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.nav-bar-inner{
+  max-width:1280px;margin:0 auto;padding:0 2rem;
+  display:flex;gap:0;overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-bar-inner::-webkit-scrollbar{display:none;}
+.nav-tag{
+  padding:10px 18px;font-size:.78rem;font-weight:500;
+  color:rgba(255,255,255,.4);white-space:nowrap;cursor:pointer;
+  border-bottom:2px solid transparent;transition:.2s;
+  text-decoration:none;display:block;
+}
+.nav-tag:hover{color:rgba(255,255,255,.8);}
+.nav-tag.active{color:var(--ember2);border-bottom-color:var(--ember2);}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{
+  background:var(--deep);
+  padding:6rem 2rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-grain{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;opacity:.6;
+}
+.hero-circle{
+  position:absolute;right:-120px;top:-120px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,65,28,.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-circle2{
+  position:absolute;left:30%;bottom:-200px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,132,31,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:3rem;}}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(196,65,28,.15);border:1px solid rgba(196,65,28,.3);
+  color:var(--ember2);font-size:.72rem;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:1.5rem;
+}
+.hero h1{
+  font-size:clamp(2.8rem,5vw,4.2rem);
+  color:#fff;line-height:1.05;font-weight:900;
+  margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--ember2);font-style:italic;}
+.hero h1 .underline-gold{
+  position:relative;display:inline-block;
+}
+.hero h1 .underline-gold::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;
+  background:var(--gold2);border-radius:2px;
+}
+.hero-desc{color:rgba(255,255,255,.5);font-size:1rem;line-height:1.8;max-width:480px;margin-bottom:2rem;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:2.5rem;}
+.btn-hero{
+  background:var(--ember);color:#fff;border:none;
+  border-radius:10px;padding:14px 28px;
+  font-size:.9rem;font-weight:600;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;
+  text-decoration:none;display:inline-block;
+}
+.btn-hero:hover{background:var(--ember2);transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;color:rgba(255,255,255,.7);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:10px;padding:14px 28px;
+  font-size:.9rem;font-weight:500;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;
+  text-decoration:none;display:inline-block;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.5);color:#fff;}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.hero-stat{}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;}
+.hero-stat-num span{color:var(--ember2);}
+.hero-stat-label{font-size:.72rem;color:rgba(255,255,255,.35);letter-spacing:.5px;margin-top:2px;}
+
+/* HERO RIGHT */
+.hero-right{position:relative;}
+.hero-featured-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;overflow:hidden;
+}
+.hero-card-img{
+  height:280px;background-size:cover;background-position:center;
+  position:relative;
+}
+.hero-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,12,7,.9) 0%,rgba(15,12,7,.1) 60%,transparent 100%);
+  display:flex;align-items:flex-end;padding:1.5rem;
+}
+.hero-card-body{padding:1.5rem;}
+.hero-card-tag{
+  font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  padding:3px 10px;border-radius:3px;background:var(--ember);color:#fff;
+  display:inline-block;margin-bottom:.75rem;
+}
+.hero-card-title{font-size:1.3rem;color:#fff;line-height:1.2;margin-bottom:.5rem;}
+.hero-card-meta{font-size:.78rem;color:rgba(255,255,255,.4);display:flex;gap:1rem;}
+.floating-badges{
+  position:absolute;top:1rem;right:-20px;
+  display:flex;flex-direction:column;gap:.75rem;
+}
+.float-badge{
+  background:var(--cream);border-radius:12px;
+  padding:.75rem 1rem;box-shadow:0 8px 32px rgba(0,0,0,.25);
+  display:flex;align-items:center;gap:8px;
+  animation:floatBadge 3s ease-in-out infinite;
+}
+.float-badge:nth-child(2){animation-delay:1.5s;}
+.float-badge-icon{font-size:1.1rem;}
+.float-badge-text{font-size:.72rem;font-weight:600;color:var(--ink);}
+.float-badge-sub{font-size:.65rem;color:var(--ink-soft);}
+@keyframes floatBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+/* ═══════════════ CONCOURS BAND ═══════════════ */
+.contest-band{
+  background:linear-gradient(135deg,var(--ember) 0%,#9B2E0E 100%);
+  padding:2rem;position:relative;overflow:hidden;
+}
+.contest-band::before{
+  content:'CONCOURS CONCOURS CONCOURS CONCOURS CONCOURS';
+  position:absolute;top:50%;left:0;right:0;
+  transform:translateY(-50%) rotate(-2deg);
+  font-family:'Playfair Display',serif;
+  font-size:5rem;font-weight:900;color:rgba(255,255,255,.04);
+  white-space:nowrap;letter-spacing:10px;pointer-events:none;
+}
+.contest-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.contest-left{display:flex;align-items:center;gap:1.5rem;}
+.contest-emoji{font-size:3rem;animation:wiggle 2s ease-in-out infinite;}
+@keyframes wiggle{0%,100%{transform:rotate(0);}25%{transform:rotate(-10deg);}75%{transform:rotate(10deg);}}
+.contest-title{font-size:1.5rem;color:#fff;font-weight:700;}
+.contest-sub{color:rgba(255,255,255,.65);font-size:.85rem;margin-top:3px;}
+.contest-timer{display:flex;gap:.75rem;align-items:center;}
+.timer-block{
+  background:rgba(0,0,0,.25);border-radius:8px;
+  padding:.5rem .75rem;text-align:center;min-width:52px;
+}
+.timer-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1;}
+.timer-label{font-size:.55rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:3px;}
+.timer-sep{font-size:1.5rem;color:rgba(255,255,255,.3);font-weight:700;}
+.contest-btn{
+  background:#fff;color:var(--ember);border:none;
+  border-radius:10px;padding:14px 28px;
+  font-size:.9rem;font-weight:700;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;
+  flex-shrink:0;
+}
+.contest-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+
+/* ═══════════════ SECTION WRAPPER ═══════════════ */
+.section{padding:5rem 2rem;}
+.section-alt{background:var(--parchment);}
+.section-dark{background:var(--ink);color:var(--cream);}
+.section-inner{max-width:1280px;margin:0 auto;}
+
+.section-label{
+  font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ember);display:flex;align-items:center;gap:8px;margin-bottom:.75rem;
+}
+.section-label::before,.section-label::after{content:'';height:1px;background:currentColor;opacity:.4;}
+.section-label::before{width:24px;}
+.section-label::after{flex:1;}
+.section-h{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;margin-bottom:.5rem;}
+.section-sub{color:var(--ink-soft);font-size:.9rem;line-height:1.7;max-width:560px;}
+.section-header-row{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:2.5rem;gap:2rem;flex-wrap:wrap;
+}
+.see-all{
+  font-size:.82rem;font-weight:600;color:var(--ember);
+  text-decoration:none;white-space:nowrap;
+  border-bottom:1px solid transparent;transition:.2s;
+}
+.see-all:hover{border-bottom-color:var(--ember);}
+
+/* ═══════════════ AI GENERATOR ═══════════════ */
+.ai-section{
+  background:var(--ink);
+  padding:5rem 2rem;
+}
+.ai-inner{max-width:1280px;margin:0 auto;}
+.ai-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;
+}
+@media(max-width:900px){.ai-grid{grid-template-columns:1fr;gap:2.5rem;}}
+.ai-label{
+  font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ember2);display:flex;align-items:center;gap:8px;margin-bottom:.75rem;
+}
+.ai-label::before{content:'';width:24px;height:1px;background:currentColor;opacity:.4;}
+.ai-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem;}
+.ai-h em{color:var(--ember2);font-style:italic;}
+.ai-desc{color:rgba(255,255,255,.45);line-height:1.8;font-size:.9rem;margin-bottom:2rem;}
+.ai-features{display:flex;flex-direction:column;gap:1rem;}
+.ai-feat{display:flex;align-items:flex-start;gap:12px;}
+.ai-feat-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(196,65,28,.15);display:flex;
+  align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+}
+.ai-feat-title{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:2px;}
+.ai-feat-desc{font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.5;}
+
+.ai-box{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:2rem;
+}
+.ai-box-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;}
+.ai-box-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--ember);display:flex;align-items:center;
+  justify-content:center;font-size:1.4rem;flex-shrink:0;
+}
+.ai-box-title{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;}
+.ai-box-sub{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:2px;}
+
+.filter-label{font-size:.7rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem;}
+.filters-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;}
+.fchip{
+  padding:7px 15px;border-radius:20px;font-size:.78rem;font-weight:500;
+  border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);
+  cursor:pointer;transition:.2s;background:transparent;
+  font-family:'Outfit',sans-serif;
+}
+.fchip:hover{border-color:var(--ember2);color:var(--ember2);}
+.fchip.on{background:var(--ember);border-color:var(--ember);color:#fff;}
+
+.ai-textarea{
+  width:100%;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);border-radius:12px;
+  padding:14px 16px;color:#fff;font-size:.9rem;
+  outline:none;font-family:'Outfit',sans-serif;
+  transition:.2s;resize:none;min-height:80px;
+  margin-bottom:1rem;line-height:1.6;
+}
+.ai-textarea:focus{border-color:var(--ember2);background:rgba(255,255,255,.09);}
+.ai-textarea::placeholder{color:rgba(255,255,255,.25);}
+
+.ai-options-row{display:flex;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.ai-select{
+  flex:1;min-width:120px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:9px 12px;color:rgba(255,255,255,.6);
+  font-size:.8rem;font-family:'Outfit',sans-serif;outline:none;
+  transition:.2s;cursor:pointer;
+}
+.ai-select:focus{border-color:var(--ember2);}
+.ai-select option{background:#1C1610;color:#fff;}
+
+.btn-gen{
+  width:100%;background:var(--ember);color:#fff;border:none;
+  border-radius:10px;padding:14px;font-size:.9rem;font-weight:600;
+  cursor:pointer;transition:.2s;font-family:'Outfit',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-gen:hover:not(:disabled){background:var(--ember2);transform:translateY(-1px);}
+.btn-gen:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+
+.ai-result-box{
+  margin-top:1.5rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:1.5rem;
+  display:none;animation:slideUp .4s ease;
+}
+.ai-result-box.show{display:block;}
+@keyframes slideUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.res-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:.75rem;}
+.res-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.res-tag{
+  font-size:.7rem;font-weight:600;letter-spacing:.3px;
+  padding:4px 10px;border-radius:4px;
+}
+.rt-time{background:rgba(184,132,31,.2);color:#F0C060;}
+.rt-diff{background:rgba(74,103,65,.2);color:#8DC08D;}
+.rt-serv{background:rgba(196,65,28,.2);color:#F08060;}
+.res-section-title{
+  font-size:.68rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:.5rem;margin-top:1.1rem;
+}
+.res-body{color:rgba(255,255,255,.65);font-size:.875rem;line-height:1.9;white-space:pre-wrap;}
+.res-tip{
+  margin-top:1rem;
+  background:rgba(196,65,28,.12);
+  border-left:3px solid var(--ember);
+  border-radius:0 10px 10px 0;
+  padding:.9rem 1.1rem;
+  color:rgba(255,255,255,.6);
+  font-size:.82rem;line-height:1.7;
+}
+.res-tip strong{color:var(--ember2);}
+
+.ai-loader{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.35);font-size:.85rem;}
+.dots{display:flex;gap:4px;}
+.dots span{width:7px;height:7px;border-radius:50%;background:var(--ember);animation:dotBounce 1.2s infinite;}
+.dots span:nth-child(2){animation-delay:.2s;}
+.dots span:nth-child(3){animation-delay:.4s;}
+@keyframes dotBounce{0%,80%,100%{transform:scale(.5);opacity:.3;}40%{transform:scale(1);opacity:1;}}
+
+/* ═══════════════ RECIPE GRID ═══════════════ */
+.recipes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.rcard{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid var(--border-soft);
+  transition:.25s;cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.rcard:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(28,22,16,.12);}
+.rcard-img{
+  height:220px;background-size:cover;background-position:center;
+  position:relative;flex-shrink:0;
+}
+.rcard-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,12,7,.7) 0%,transparent 55%);
+  display:flex;align-items:flex-end;padding:1rem;gap:.5rem;
+}
+.diff{
+  font-size:.65rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;color:#fff;
+}
+.diff-easy{background:var(--sage);}
+.diff-med{background:var(--gold);}
+.diff-hard{background:var(--ember);}
+.rcard-save{
+  position:absolute;top:.75rem;right:.75rem;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.9);display:flex;
+  align-items:center;justify-content:center;
+  font-size:.9rem;cursor:pointer;transition:.2s;
+}
+.rcard-save:hover{background:#fff;transform:scale(1.1);}
+.rcard-body{padding:1.25rem;flex:1;display:flex;flex-direction:column;}
+.rcard-cats{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem;}
+.rcard-cat{
+  font-size:.65rem;font-weight:600;letter-spacing:.3px;
+  padding:2px 8px;border-radius:3px;
+  background:var(--ember-pale);color:var(--ember);
+}
+.rcard-title{
+  font-size:1.05rem;font-weight:500;color:var(--ink);
+  margin-bottom:.4rem;line-height:1.3;transition:.2s;
+}
+.rcard:hover .rcard-title{color:var(--ember);}
+.rcard-desc{font-size:.8rem;color:var(--ink-soft);line-height:1.6;flex:1;}
+.rcard-footer{
+  margin-top:1rem;padding-top:.8rem;
+  border-top:1px solid var(--border-soft);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.rcard-time{font-size:.75rem;color:var(--ink-soft);font-weight:500;display:flex;align-items:center;gap:4px;}
+.rcard-author{font-size:.72rem;color:var(--ink-soft);}
+.rcard-author-ai{color:var(--ember);font-weight:600;}
+.rcard-rating{display:flex;align-items:center;gap:3px;font-size:.72rem;color:var(--gold);}
+
+/* ═══════════════ FEATURED / EDITORIAL ═══════════════ */
+.editorial-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  grid-template-rows:auto auto;
+  gap:1.5rem;
+}
+@media(max-width:800px){.editorial-grid{grid-template-columns:1fr;}}
+.editorial-main{
+  grid-row:1 / 3;
+  background:#fff;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border-soft);cursor:pointer;
+  transition:.25s;
+}
+.editorial-main:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(28,22,16,.12);}
+.editorial-main-img{
+  height:360px;background-size:cover;background-position:center;
+  position:relative;
+}
+.editorial-main-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,12,7,.85) 0%,rgba(15,12,7,.1) 60%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;
+}
+.editorial-main-tag{
+  display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  background:var(--ember);color:#fff;padding:5px 12px;border-radius:4px;margin-bottom:.75rem;
+  width:fit-content;
+}
+.editorial-main-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;line-height:1.15;font-weight:700;}
+.editorial-main-body{padding:1.5rem;}
+.editorial-main-desc{font-size:.875rem;color:var(--ink-soft);line-height:1.7;margin-bottom:1rem;}
+.editorial-main-meta{display:flex;gap:1.25rem;font-size:.75rem;color:var(--ink-soft);}
+
+.editorial-side{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid var(--border-soft);cursor:pointer;
+  display:flex;transition:.25s;
+}
+.editorial-side:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(28,22,16,.1);}
+.editorial-side-img{
+  width:120px;flex-shrink:0;
+  background-size:cover;background-position:center;
+}
+.editorial-side-body{padding:1rem;display:flex;flex-direction:column;justify-content:center;}
+.editorial-side-tag{
+  font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--ember);margin-bottom:.4rem;
+}
+.editorial-side-title{font-size:.95rem;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:.4rem;}
+.editorial-side-meta{font-size:.72rem;color:var(--ink-soft);}
+
+/* ═══════════════ CATEGORIES ═══════════════ */
+.cats-scroll{
+  display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem;
+  scrollbar-width:none;
+}
+.cats-scroll::-webkit-scrollbar{display:none;}
+.cat-card{
+  flex-shrink:0;width:150px;
+  border-radius:16px;overflow:hidden;
+  cursor:pointer;transition:.25s;position:relative;
+}
+.cat-card:hover{transform:scale(1.04);}
+.cat-img{
+  height:180px;background-size:cover;background-position:center;
+  position:relative;
+}
+.cat-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,12,7,.75) 0%,rgba(15,12,7,.1) 60%,transparent 100%);
+  display:flex;align-items:flex-end;padding:.9rem;
+}
+.cat-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;font-weight:700;line-height:1.2;}
+.cat-count{font-size:.65rem;color:rgba(255,255,255,.55);margin-top:2px;}
+
+/* ═══════════════ CHEF TIPS ═══════════════ */
+.tips-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+@media(max-width:800px){.tips-grid{grid-template-columns:1fr;}}
+.tip-card{
+  background:#fff;border-radius:16px;padding:1.75rem;
+  border:1px solid var(--border-soft);
+  transition:.2s;
+}
+.tip-card:hover{box-shadow:0 8px 32px rgba(28,22,16,.09);}
+.tip-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.1rem;
+}
+.tip-icon-ember{background:var(--ember-pale);}
+.tip-icon-gold{background:var(--gold-pale);}
+.tip-icon-sage{background:var(--sage-pale);}
+.tip-number{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:900;
+  color:var(--border);line-height:1;
+  position:absolute;top:1.5rem;right:1.75rem;
+}
+.tip-card{position:relative;overflow:hidden;}
+.tip-title{font-size:1.1rem;font-weight:500;color:var(--ink);margin-bottom:.6rem;}
+.tip-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.7;}
+.tip-link{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.78rem;font-weight:600;color:var(--ember);
+  text-decoration:none;margin-top:1rem;
+  border-bottom:1px solid transparent;transition:.2s;
+}
+.tip-link:hover{border-bottom-color:var(--ember);}
+
+/* ═══════════════ SUBMIT FORM ═══════════════ */
+.submit-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;
+}
+@media(max-width:900px){.submit-grid{grid-template-columns:1fr;gap:2.5rem;}}
+.submit-left{}
+.submit-left h2{margin-bottom:.75rem;}
+.submit-left p{color:var(--ink-soft);line-height:1.8;font-size:.9rem;margin-bottom:2rem;}
+.submit-steps{display:flex;flex-direction:column;gap:1.25rem;}
+.submit-step{display:flex;align-items:flex-start;gap:1rem;}
+.step-num{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--ember);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+  flex-shrink:0;
+}
+.step-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.step-desc{font-size:.8rem;color:var(--ink-soft);line-height:1.6;}
+
+.submit-form-card{
+  background:#fff;border-radius:20px;padding:2.5rem;
+  border:1px solid var(--border-soft);
+  box-shadow:0 4px 24px rgba(28,22,16,.06);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fgroup{margin-bottom:1.25rem;}
+.flabel{
+  display:block;font-size:.7rem;font-weight:600;
+  letter-spacing:.5px;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:6px;
+}
+.finput{
+  width:100%;background:var(--parchment);
+  border:1px solid var(--border);border-radius:10px;
+  padding:11px 15px;font-size:.875rem;color:var(--ink);
+  outline:none;transition:.2s;font-family:'Outfit',sans-serif;
+}
+.finput:focus{border-color:var(--ember);background:#fff;}
+.finput::placeholder{color:var(--ink-soft);opacity:.5;}
+textarea.finput{resize:none;}
+select.finput{cursor:pointer;}
+.btn-publish{
+  width:100%;background:var(--ember);color:#fff;border:none;
+  border-radius:10px;padding:14px;font-size:.9rem;font-weight:600;
+  cursor:pointer;transition:.2s;font-family:'Outfit',sans-serif;
+  margin-top:.5rem;
+}
+.btn-publish:hover{background:var(--ember2);}
+.form-note{font-size:.72rem;color:var(--ink-soft);text-align:center;margin-top:.75rem;line-height:1.5;}
+
+/* ═══════════════ NEWSLETTER ═══════════════ */
+.newsletter-section{
+  background:var(--ink);padding:5rem 2rem;
+  position:relative;overflow:hidden;
+}
+.newsletter-section::before{
+  content:'';position:absolute;right:-100px;top:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,132,31,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.nl-inner{max-width:700px;margin:0 auto;text-align:center;}
+.nl-badge{
+  display:inline-block;
+  background:rgba(184,132,31,.15);border:1px solid rgba(184,132,31,.3);
+  color:var(--gold2);font-size:.7rem;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;padding:6px 16px;border-radius:4px;margin-bottom:1.5rem;
+}
+.nl-title{font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.1;margin-bottom:1rem;font-weight:900;}
+.nl-title em{color:var(--gold2);font-style:italic;}
+.nl-desc{color:rgba(255,255,255,.4);font-size:.9rem;line-height:1.7;margin-bottom:2rem;}
+.nl-form{display:flex;gap:.75rem;max-width:480px;margin:0 auto;}
+.nl-input{
+  flex:1;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;padding:13px 18px;
+  color:#fff;font-size:.9rem;outline:none;
+  font-family:'Outfit',sans-serif;transition:.2s;
+}
+.nl-input:focus{border-color:var(--gold2);}
+.nl-input::placeholder{color:rgba(255,255,255,.25);}
+.nl-btn{
+  background:var(--gold);color:#fff;border:none;
+  border-radius:10px;padding:13px 22px;
+  font-size:.85rem;font-weight:600;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;white-space:nowrap;
+  flex-shrink:0;
+}
+.nl-btn:hover{background:var(--gold2);transform:translateY(-1px);}
+.nl-perks{display:flex;justify-content:center;gap:2rem;margin-top:1.75rem;flex-wrap:wrap;}
+.nl-perk{font-size:.75rem;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:5px;}
+
+/* ═══════════════ COMMUNITY BAND ═══════════════ */
+.community-band{
+  background:var(--ember);padding:1.5rem 2rem;
+}
+.cb-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.cb-text{}
+.cb-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700;}
+.cb-sub{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:2px;}
+.cb-avatars{display:flex;align-items:center;gap:.5rem;}
+.cb-avatar{
+  width:36px;height:36px;border-radius:50%;
+  border:2px solid var(--ember);
+  background:var(--parchment);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;color:var(--ember);
+  margin-left:-10px;
+  background-size:cover;background-position:center;
+}
+.cb-avatar:first-child{margin-left:0;}
+.cb-count{font-size:.78rem;color:rgba(255,255,255,.7);margin-left:.75rem;}
+.cb-btn{
+  background:#fff;color:var(--ember);border:none;
+  border-radius:8px;padding:11px 22px;
+  font-size:.83rem;font-weight:700;cursor:pointer;
+  transition:.2s;font-family:'Outfit',sans-serif;flex-shrink:0;
+}
+.cb-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.15);}
+
+/* ═══════════════ TRENDING ═══════════════ */
+.trending-section{padding:5rem 2rem;background:var(--parchment);}
+.trending-layout{display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;}
+@media(max-width:900px){.trending-layout{grid-template-columns:1fr;}}
+.trending-list{display:flex;flex-direction:column;gap:0;}
+.titem{
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.25rem 0;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:.15s;
+}
+.titem:last-child{border-bottom:none;}
+.titem:hover .titem-title{color:var(--ember);}
+.tnum{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:900;
+  color:var(--border);min-width:40px;line-height:1;
+}
+.titem-img{
+  width:72px;height:72px;border-radius:10px;
+  background-size:cover;background-position:center;flex-shrink:0;
+}
+.titem-info{flex:1;}
+.titem-title{font-size:.95rem;font-weight:500;color:var(--ink);transition:.2s;margin-bottom:3px;}
+.titem-meta{font-size:.72rem;color:var(--ink-soft);}
+.titem-rating{font-size:.78rem;color:var(--gold);}
+
+.trending-sidebar{}
+.trend-sidebar-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:1.25rem;}
+.week-stat{
+  background:#fff;border-radius:14px;padding:1.25rem;
+  border:1px solid var(--border-soft);margin-bottom:1rem;
+}
+.ws-label{font-size:.7rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.3rem;}
+.ws-value{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--ink);}
+.ws-delta{font-size:.72rem;color:var(--sage);font-weight:600;margin-top:2px;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tag-pill{
+  padding:7px 14px;border-radius:20px;
+  background:#fff;border:1px solid var(--border);
+  font-size:.75rem;font-weight:500;color:var(--ink-mid);
+  cursor:pointer;transition:.2s;
+}
+.tag-pill:hover{border-color:var(--ember);color:var(--ember);}
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer{
+  background:var(--deep);
+  padding:4rem 2rem 2rem;
+}
+.footer-inner{max-width:1280px;margin:0 auto;}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:3rem;
+}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand .logo{display:block;margin-bottom:1rem;}
+.footer-desc{font-size:.82rem;color:rgba(255,255,255,.3);line-height:1.8;max-width:280px;}
+.footer-col-title{font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem;}
+.footer-links{display:flex;flex-direction:column;gap:.6rem;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s;}
+.footer-links a:hover{color:rgba(255,255,255,.8);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-copy{font-size:.75rem;color:rgba(255,255,255,.2);}
+.footer-socials{display:flex;gap:1rem;}
+.footer-social{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;cursor:pointer;transition:.2s;text-decoration:none;
+}
+.footer-social:hover{background:rgba(255,255,255,.12);}
+
+/* ═══════════════ MISC ═══════════════ */
+.scroll-indicator{
+  position:fixed;top:0;left:0;height:3px;background:var(--ember);
+  z-index:9999;transition:width .1s;
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scroll-bar"></div>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+  <div class="header-top">
+    <a class="logo" href="#">Cuisine<em>AZ</em></a>
+    <div class="header-search">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Rechercher une recette, un ingrédient, un chef…" />
+    </div>
+    <nav class="header-nav">
+      <a href="#recettes" class="active">Recettes</a>
+      <a href="#categories">Catégories</a>
+      <a href="#concours">Concours</a>
+      <a href="#ia">Générateur IA</a>
+    </nav>
+  </div>
+  <div class="nav-bar">
+    <div class="nav-bar-inner">
+      <a class="nav-tag active" href="#">Tous</a>
+      <a class="nav-tag" href="#">Entrées</a>
+      <a class="nav-tag" href="#">Plats</a>
+      <a class="nav-tag" href="#">Desserts</a>
+      <a class="nav-tag" href="#">Végétarien</a>
+      <a class="nav-tag" href="#">Rapide &lt; 30min</a>
+      <a class="nav-tag" href="#">Fait-maison</a>
+      <a class="nav-tag" href="#">Cuisine du Monde</a>
+      <a class="nav-tag" href="#">Pâtisserie</a>
+      <a class="nav-tag" href="#">Sans gluten</a>
+      <a class="nav-tag" href="#">Apéro</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">✦ Nouveau — Recettes de saison</div>
+      <h1>
+        Cuisinez<br>
+        avec <em>passion</em>,<br>
+        partagez avec <span class="underline-gold">fierté.</span>
+      </h1>
+      <p class="hero-desc">Découvrez des milliers de recettes authentiques créées par notre communauté, ou laissez notre IA vous inspirer avec des créations sur-mesure selon vos ingrédients.</p>
+      <div class="hero-ctas">
+        <a href="#recettes" class="btn-hero">Explorer les recettes</a>
+        <a href="#ia" class="btn-outline">✨ Générer avec l'IA</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">12<span>K</span></div>
+          <div class="hero-stat-label">Recettes publiées</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">48<span>K</span></div>
+          <div class="hero-stat-label">Membres actifs</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4.9<span>★</span></div>
+          <div class="hero-stat-label">Note moyenne</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-featured-card">
+        <div class="hero-card-img" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80')">
+          <div class="hero-card-overlay">
+            <span class="hero-card-tag">⭐ Recette du jour</span>
+          </div>
+        </div>
+        <div class="hero-card-body">
+          <div class="hero-card-tag">Plat principal · Italien</div>
+          <div class="hero-card-title">Pizza Margherita Napolitaine</div>
+          <div class="hero-card-meta"><span>⏱ 45 min</span><span>👤 Sofia M.</span><span>⭐ 4.9 (234)</span></div>
+        </div>
+      </div>
+      <div class="floating-badges">
+        <div class="float-badge">
+          <div class="float-badge-icon">🔥</div>
+          <div><div class="float-badge-text">Tendance</div><div class="float-badge-sub">+240 vues aujourd'hui</div></div>
+        </div>
+        <div class="float-badge">
+          <div class="float-badge-icon">✨</div>
+          <div><div class="float-badge-text">IA disponible</div><div class="float-badge-sub">Génération gratuite</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONCOURS BAND ═══════════ -->
+<div class="contest-band" id="concours">
+  <div class="contest-inner">
+    <div class="contest-left">
+      <div class="contest-emoji">🎁</div>
+      <div>
+        <div class="contest-title">Grand Concours Cuisine — Mai 2026</div>
+        <div class="contest-sub">Gagnez des appareils de cuisine haut de gamme ! Participation 100% gratuite.</div>
+      </div>
+    </div>
+    <div class="contest-timer">
+      <div class="timer-block"><div class="timer-num" id="t-days">12</div><div class="timer-label">Jours</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block"><div class="timer-num" id="t-hrs">08</div><div class="timer-label">Heures</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block"><div class="timer-num" id="t-min">34</div><div class="timer-label">Min</div></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block"><div class="timer-num" id="t-sec">00</div><div class="timer-label">Sec</div></div>
+    </div>
+    <button class="contest-btn">Participer maintenant →</button>
+  </div>
+</div>
+
+<!-- ═══════════ CATEGORIES ═══════════ -->
+<section class="section" id="categories">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Parcourir</div>
+        <h2 class="section-h">Toutes les catégories</h2>
+        <p class="section-sub">Des recettes du quotidien aux grands classiques, explorez l'univers de la cuisine française et internationale.</p>
+      </div>
+      <a href="#" class="see-all">Voir tout →</a>
+    </div>
+    <div class="cats-scroll">
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Plats<br>chauds</div><div class="cat-count">1 240 recettes</div></div></div></div></div>
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Pâtis-<br>serie</div><div class="cat-count">890 recettes</div></div></div></div></div>
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Salades<br>&amp; Entrées</div><div class="cat-count">670 recettes</div></div></div></div></div>
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Soupes<br>&amp; Bouillons</div><div class="cat-count">420 recettes</div></div></div></div></div>
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Végé-<br>tarien</div><div class="cat-count">980 recettes</div></div></div></div></div>
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1559181567-c3190bba5f8b?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Boissons<br>&amp; Cocktails</div><div class="cat-count">310 recettes</div></div></div></div></div>
+      <div class="cat-card"><div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?auto=format&fit=crop&w=300&q=80')"><div class="cat-overlay"><div><div class="cat-name">Cuisine<br>du Monde</div><div class="cat-count">1 560 recettes</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EDITORIAL FEATURED ═══════════ -->
+<section class="section section-alt" id="recettes">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Sélection de la rédaction</div>
+        <h2 class="section-h">Recettes à la une</h2>
+      </div>
+      <a href="#" class="see-all">Voir toutes les recettes →</a>
+    </div>
+    <div class="editorial-grid">
+      <div class="editorial-main">
+        <div class="editorial-main-img" style="background-image:url('https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=800&q=80')">
+          <div class="editorial-main-overlay">
+            <div>
+              <div class="editorial-main-tag">🏆 Coup de cœur</div>
+              <div class="editorial-main-title">Bœuf Bourguignon de Grand-Mère — La vraie recette</div>
+            </div>
+          </div>
+        </div>
+        <div class="editorial-main-body">
+          <p class="editorial-main-desc">Un plat mijoté pendant 3h30 dans un vin de Bourgogne corsé, avec des lardons fumés, des champignons et des carottes fondantes. La recette familiale telle qu'elle se transmettait de génération en génération dans les fermes bourguignonnes.</p>
+          <div class="editorial-main-meta">
+            <span>⏱ 3h 30min</span>
+            <span>👤 Par Michel R.</span>
+            <span>⭐ 4.97 (1 204 avis)</span>
+            <span>🔥 Élaboré</span>
+          </div>
+        </div>
+      </div>
+      <div class="editorial-side">
+        <div class="editorial-side-img" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=200&q=80')"></div>
+        <div class="editorial-side-body">
+          <div class="editorial-side-tag">Classique · Facile</div>
+          <div class="editorial-side-title">Gratin Dauphinois Traditionnel</div>
+          <div class="editorial-side-meta">⏱ 1h 15min · Par Jean D.</div>
+        </div>
+      </div>
+      <div class="editorial-side">
+        <div class="editorial-side-img" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=200&q=80')"></div>
+        <div class="editorial-side-body">
+          <div class="editorial-side-tag">Healthy · Rapide</div>
+          <div class="editorial-side-title">Salade de Saison aux Herbes Fraîches</div>
+          <div class="editorial-side-meta">⏱ 15min · ✨ Claude IA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ALL RECIPES GRID ═══════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Communauté</div>
+        <h2 class="section-h">Recettes populaires</h2>
+        <p class="section-sub">Les meilleures créations de nos membres, notées et commentées par la communauté.</p>
+      </div>
+      <a href="#" class="see-all">Voir tout →</a>
+    </div>
+    <div class="recipes-grid">
+      <div class="rcard">
+        <div class="rcard-img" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80')">
+          <div class="rcard-overlay"><span class="diff diff-easy">Facile</span></div>
+          <div class="rcard-save">🤍</div>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-cats"><span class="rcard-cat">Italien</span><span class="rcard-cat">Plat</span></div>
+          <div class="rcard-title">Pizza Margherita Maison</div>
+          <div class="rcard-desc">La pâte fine et croustillante d'un pizzaiolo napolitain, avec sauce tomate maison et mozzarella di bufala.</div>
+          <div class="rcard-footer">
+            <span class="rcard-time">⏱ 45min</span>
+            <span class="rcard-rating">★★★★★ 4.9</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-img" style="background-image:url('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=600&q=80')">
+          <div class="rcard-overlay"><span class="diff diff-med">Intermédiaire</span></div>
+          <div class="rcard-save">🤍</div>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-cats"><span class="rcard-cat">Français</span><span class="rcard-cat">Plat</span></div>
+          <div class="rcard-title">Poulet Rôti aux Herbes de Provence</div>
+          <div class="rcard-desc">Un poulet fermier rôti lentement avec thym, romarin et ail confit. La peau ultra croustillante, la chair fondante.</div>
+          <div class="rcard-footer">
+            <span class="rcard-time">⏱ 1h 30min</span>
+            <span class="rcard-rating">★★★★★ 4.8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-img" style="background-image:url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=80')">
+          <div class="rcard-overlay"><span class="diff diff-easy">Facile</span></div>
+          <div class="rcard-save">🤍</div>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-cats"><span class="rcard-cat">Dessert</span><span class="rcard-cat">Rapide</span></div>
+          <div class="rcard-title">Pancakes Moelleux au Beurre Noisette</div>
+          <div class="rcard-desc">Des pancakes épais et aériens, parfumés au beurre noisette. Le secret : des blancs en neige bien serrés.</div>
+          <div class="rcard-footer">
+            <span class="rcard-time">⏱ 20min</span>
+            <span class="rcard-rating">★★★★☆ 4.7</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-img" style="background-image:url('https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=600&q=80')">
+          <div class="rcard-overlay"><span class="diff diff-easy">Facile</span></div>
+          <div class="rcard-save">🤍</div>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-cats"><span class="rcard-cat">Healthy</span><span class="rcard-cat">Végé</span></div>
+          <div class="rcard-title">Bol Buddha aux Légumes Rôtis</div>
+          <div class="rcard-desc">Une explosion de couleurs et de saveurs — quinoa, légumes de saison rôtis, avocat, et sauce tahini citronnée.</div>
+          <div class="rcard-footer">
+            <span class="rcard-time">⏱ 35min</span>
+            <span class="rcard-rating">★★★★★ 4.9</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-img" style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80')">
+          <div class="rcard-overlay"><span class="diff diff-easy">Facile</span></div>
+          <div class="rcard-save">❤️</div>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-cats"><span class="rcard-cat">Entrée</span><span class="rcard-cat">Été</span></div>
+          <div class="rcard-title">Gaspacho Andalou Traditionnel</div>
+          <div class="rcard-desc">Le gaspacho espagnol authentique, glacé et velouté. Tomates mûres, poivrons, concombre, ail et vinaigre de Jerez.</div>
+          <div class="rcard-footer">
+            <span class="rcard-time">⏱ 15min</span>
+            <span class="rcard-rating">★★★★★ 4.8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-img" style="background-image:url('https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?auto=format&fit=crop&w=600&q=80')">
+          <div class="rcard-overlay"><span class="diff diff-hard">Élaboré</span></div>
+          <div class="rcard-save">🤍</div>
+        </div>
+        <div class="rcard-body">
+          <div class="rcard-cats"><span class="rcard-cat">Pâtisserie</span><span class="rcard-cat">Festif</span></div>
+          <div class="rcard-title">Tarte au Citron Meringuée de Pierre H.</div>
+          <div class="rcard-desc">La tarte au citron ultime — crème citronnée intense, pâte sablée friable, meringue italienne parfaitement dorée.</div>
+          <div class="rcard-footer">
+            <span class="rcard-time">⏱ 2h</span>
+            <span class="rcard-rating">★★★★★ 5.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AI GENERATOR ═══════════ -->
+<section class="ai-section" id="ia">
+  <div class="ai-inner">
+    <div class="ai-grid">
+      <div>
+        <div class="ai-label">Intelligence Artificielle</div>
+        <h2 class="ai-h">Votre chef personnel,<br><em>propulsé par Claude.</em></h2>
+        <p class="ai-desc">Décrivez ce que vous avez dans votre frigo, vos envies du moment, vos contraintes alimentaires — notre IA génère une recette complète et personnalisée en quelques secondes.</p>
+        <div class="ai-features">
+          <div class="ai-feat">
+            <div class="ai-feat-icon">🎯</div>
+            <div>
+              <div class="ai-feat-title">Recettes 100% personnalisées</div>
+              <div class="ai-feat-desc">Adaptées à vos ingrédients, votre niveau et vos préférences alimentaires.</div>
+            </div>
+          </div>
+          <div class="ai-feat">
+            <div class="ai-feat-icon">⚡</div>
+            <div>
+              <div class="ai-feat-title">Génération en moins de 5 secondes</div>
+              <div class="ai-feat-desc">Résultats instantanés avec ingrédients détaillés, étapes claires et astuces de chef.</div>
+            </div>
+          </div>
+          <div class="ai-feat">
+            <div class="ai-feat-icon">♾️</div>
+            <div>
+              <div class="ai-feat-title">Infini et gratuit</div>
+              <div class="ai-feat-desc">Générez autant de recettes que vous voulez, sans limite ni inscription requise.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-box">
+        <div class="ai-box-header">
+          <div class="ai-box-icon">✨</div>
+          <div>
+            <div class="ai-box-title">Générateur de recettes</div>
+            <div class="ai-box-sub">Propulsé par Claude AI · Résultats immédiats</div>
+          </div>
+        </div>
+
+        <div class="filter-label">Type de recette</div>
+        <div class="filters-row" id="chips">
+          <button class="fchip on" data-f="rapide">⚡ Rapide</button>
+          <button class="fchip" data-f="veggie">🥦 Végé</button>
+          <button class="fchip" data-f="budget">💰 Budget</button>
+          <button class="fchip" data-f="festif">🎉 Festif</button>
+          <button class="fchip" data-f="healthy">💚 Healthy</button>
+          <button class="fchip" data-f="gourmet">👨‍🍳 Gourmet</button>
+        </div>
+
+        <div class="filter-label">Ingrédients disponibles</div>
+        <textarea class="ai-textarea" id="ing" placeholder="Ex: poulet, crème fraîche, champignons, thym… ou laissez vide pour une suggestion !"></textarea>
+
+        <div class="ai-options-row">
+          <select class="ai-select" id="sel-persons">
+            <option>2 personnes</option>
+            <option>4 personnes</option>
+            <option>6 personnes</option>
+            <option>8 personnes</option>
+          </select>
+          <select class="ai-select" id="sel-time">
+            <option>Moins de 30 min</option>
+            <option>30–60 min</option>
+            <option>1–2 heures</option>
+            <option>Plus de 2h</option>
+          </select>
+          <select class="ai-select" id="sel-level">
+            <option>Facile</option>
+            <option>Intermédiaire</option>
+            <option>Expert</option>
+          </select>
+        </div>
+
+        <button class="btn-gen" id="genBtn" onclick="genRecipe()">✦ Générer ma recette</button>
+
+        <div class="ai-result-box" id="aiResult">
+          <div id="aiContent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CHEF TIPS ═══════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Savoir-faire</div>
+        <h2 class="section-h">Astuces de chef</h2>
+        <p class="section-sub">Les techniques professionnelles expliquées simplement pour élever votre cuisine au niveau supérieur.</p>
+      </div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-number">01</div>
+        <div class="tip-icon tip-icon-ember">🔪</div>
+        <div class="tip-title">La coupe en brunoise parfaite</div>
+        <p class="tip-desc">La brunoise — petits dés de 1–2mm — est la base de nombreuses sauces et garnitures. La clé : un couteau bien aiguisé, une planche stable, et couper avec le knuckle comme guide. Un geste régulier plutôt que de la vitesse.</p>
+        <a href="#" class="tip-link">Voir la technique →</a>
+      </div>
+      <div class="tip-card">
+        <div class="tip-number">02</div>
+        <div class="tip-icon tip-icon-gold">🥩</div>
+        <div class="tip-title">Saisir une viande à la perfection</div>
+        <p class="tip-desc">La réaction de Maillard crée cette croûte dorée et savoureuse. Règle d'or : la poêle doit fumer avant d'y déposer la viande, qui doit être à température ambiante et parfaitement sèche. Ne pas bouger pendant les 2 premières minutes.</p>
+        <a href="#" class="tip-link">Voir la technique →</a>
+      </div>
+      <div class="tip-card">
+        <div class="tip-number">03</div>
+        <div class="tip-icon tip-icon-sage">🫙</div>
+        <div class="tip-title">Émulsionner une vinaigrette stable</div>
+        <p class="tip-desc">Une vinaigrette qui ne se sépare pas : commencez par mélanger la moutarde avec le vinaigre, puis versez l'huile en filet très fin tout en fouettant vigoureusement. La lécithine de la moutarde agit comme émulsifiant naturel.</p>
+        <a href="#" class="tip-link">Voir la technique →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TRENDING ═══════════ -->
+<section class="trending-section" id="tendances">
+  <div class="section-inner">
+    <div class="trending-layout">
+      <div>
+        <div class="section-label">Cette semaine</div>
+        <h2 class="section-h" style="margin-bottom:2rem;">Top recettes</h2>
+        <div class="trending-list">
+          <div class="titem">
+            <div class="tnum">01</div>
+            <div class="titem-img" style="background-image:url('https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=150&q=80')"></div>
+            <div class="titem-info">
+              <div class="titem-title">Bœuf Bourguignon de Grand-Mère</div>
+              <div class="titem-meta">Plat · Français · Par Michel R. · 1 204 avis</div>
+            </div>
+            <div class="titem-rating">★★★★★ 4.97</div>
+          </div>
+          <div class="titem">
+            <div class="tnum">02</div>
+            <div class="titem-img" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&q=80')"></div>
+            <div class="titem-info">
+              <div class="titem-title">Pizza Margherita Maison</div>
+              <div class="titem-meta">Plat · Italien · Par Sofia M. · 876 avis</div>
+            </div>
+            <div class="titem-rating">★★★★★ 4.95</div>
+          </div>
+          <div class="titem">
+            <div class="tnum">03</div>
+            <div class="titem-img" style="background-image:url('https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?auto=format&fit=crop&w=150&q=80')"></div>
+            <div class="titem-info">
+              <div class="titem-title">Tarte au Citron Meringuée</div>
+              <div class="titem-meta">Dessert · Pâtisserie · Par Pierre H. · 542 avis</div>
+            </div>
+            <div class="titem-rating">★★★★★ 5.00</div>
+          </div>
+          <div class="titem">
+            <div class="tnum">04</div>
+            <div class="titem-img" style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=150&q=80')"></div>
+            <div class="titem-info">
+              <div class="titem-title">Bol Buddha Veggie</div>
+              <div class="titem-meta">Plat · Healthy · Par Clara V. · 421 avis</div>
+            </div>
+            <div class="titem-rating">★★★★★ 4.92</div>
+          </div>
+          <div class="titem">
+            <div class="tnum">05</div>
+            <div class="titem-img" style="background-image:url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=150&q=80')"></div>
+            <div class="titem-info">
+              <div class="titem-title">Pancakes au Beurre Noisette</div>
+              <div class="titem-meta">Dessert · Brunch · ✨ Claude IA · 389 avis</div>
+            </div>
+            <div class="titem-rating">★★★★☆ 4.75</div>
+          </div>
+        </div>
+      </div>
+      <div class="trending-sidebar">
+        <div class="trend-sidebar-title">Statistiques</div>
+        <div class="week-stat">
+          <div class="ws-label">Recettes publiées cette semaine</div>
+          <div class="ws-value">248</div>
+          <div class="ws-delta">↑ +12% vs semaine dernière</div>
+        </div>
+        <div class="week-stat">
+          <div class="ws-label">Générations IA cette semaine</div>
+          <div class="ws-value">4 182</div>
+          <div class="ws-delta">↑ +34% de croissance</div>
+        </div>
+        <div class="week-stat">
+          <div class="ws-label">Nouveaux membres</div>
+          <div class="ws-value">1 096</div>
+          <div class="ws-delta">↑ Record mensuel</div>
+        </div>
+        <div class="trend-sidebar-title" style="margin-top:1.5rem;">Tags populaires</div>
+        <div class="tag-cloud">
+          <span class="tag-pill">#rapide</span>
+          <span class="tag-pill">#été</span>
+          <span class="tag-pill">#sans-gluten</span>
+          <span class="tag-pill">#poulet</span>
+          <span class="tag-pill">#brunch</span>
+          <span class="tag-pill">#pâtes</span>
+          <span class="tag-pill">#vegan</span>
+          <span class="tag-pill">#chocolat</span>
+          <span class="tag-pill">#bbq</span>
+          <span class="tag-pill">#enfants</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMMUNITY BAND ═══════════ -->
+<div class="community-band">
+  <div class="cb-inner">
+    <div class="cb-text">
+      <div class="cb-title">Rejoignez 48 000 passionnés de cuisine</div>
+      <div class="cb-sub">Partagez vos créations, commentez, et inspirez-vous des meilleurs cuistots du web.</div>
+    </div>
+    <div class="cb-avatars">
+      <div class="cb-avatar" style="background-image:url('https://i.pravatar.cc/40?img=1');background-size:cover;"></div>
+      <div class="cb-avatar" style="background-image:url('https://i.pravatar.cc/40?img=5');background-size:cover;"></div>
+      <div class="cb-avatar" style="background-image:url('https://i.pravatar.cc/40?img=9');background-size:cover;"></div>
+      <div class="cb-avatar" style="background-image:url('https://i.pravatar.cc/40?img=12');background-size:cover;"></div>
+      <div class="cb-avatar" style="background-image:url('https://i.pravatar.cc/40?img=17');background-size:cover;"></div>
+      <div class="cb-count">+47 995 membres</div>
+    </div>
+    <button class="cb-btn">S'inscrire gratuitement →</button>
+  </div>
+</div>
+
+<!-- ═══════════ SUBMIT RECIPE ═══════════ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="submit-grid">
+      <div class="submit-left">
+        <div class="section-label">Contribuer</div>
+        <h2 class="section-h">Partagez votre recette</h2>
+        <p>Vous avez une recette de famille, une création personnelle ou une technique secrète ? La communauté CuisineAZ vous attend ! Vos recettes peuvent être vues par des milliers de passionnés chaque semaine.</p>
+        <div class="submit-steps">
+          <div class="submit-step">
+            <div class="step-num">1</div>
+            <div>
+              <div class="step-title">Rédigez votre recette</div>
+              <div class="step-desc">Décrivez vos ingrédients et les étapes de préparation. Soyez précis : les quantités, les temps et les températures font toute la différence.</div>
+            </div>
+          </div>
+          <div class="submit-step">
+            <div class="step-num">2</div>
+            <div>
+              <div class="step-title">Ajoutez une belle photo</div>
+              <div class="step-desc">Une image vaut mille mots. Les recettes avec photo reçoivent 8× plus de vues et de commentaires.</div>
+            </div>
+          </div>
+          <div class="submit-step">
+            <div class="step-num">3</div>
+            <div>
+              <div class="step-title">Publiez et partagez</div>
+              <div class="step-desc">Votre recette est publiée immédiatement sur le site et visible par toute la communauté. Les meilleurs sont mis en avant chaque semaine.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="submit-form-card">
+        <form onsubmit="handleSubmit(event)">
+          <div class="fgroup">
+            <label class="flabel">Titre de la recette *</label>
+            <input class="finput" type="text" id="ftitle" placeholder="Ex: Tarte Tatin aux pommes caramélisées…" required />
+          </div>
+          <div class="form-row">
+            <div class="fgroup">
+              <label class="flabel">Catégorie</label>
+              <select class="finput">
+                <option>Plat principal</option>
+                <option>Entrée</option>
+                <option>Dessert</option>
+                <option>Apéro</option>
+                <option>Boisson</option>
+              </select>
+            </div>
+            <div class="fgroup">
+              <label class="flabel">Difficulté</label>
+              <select class="finput">
+                <option>Facile</option>
+                <option>Intermédiaire</option>
+                <option>Élaboré</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="fgroup">
+              <label class="flabel">Temps total</label>
+              <input class="finput" type="text" placeholder="Ex: 45min" />
+            </div>
+            <div class="fgroup">
+              <label class="flabel">Nombre de portions</label>
+              <input class="finput" type="text" placeholder="Ex: 4 personnes" />
+            </div>
+          </div>
+          <div class="fgroup">
+            <label class="flabel">Ingrédients *</label>
+            <textarea class="finput" rows="3" placeholder="Un ingrédient par ligne : 200g de farine, 3 œufs, 100ml de lait…"></textarea>
+          </div>
+          <div class="fgroup">
+            <label class="flabel">Étapes de préparation *</label>
+            <textarea class="finput" rows="4" placeholder="Décrivez chaque étape dans l'ordre…"></textarea>
+          </div>
+          <div class="fgroup">
+            <label class="flabel">Conseil du chef (optionnel)</label>
+            <input class="finput" type="text" placeholder="Un petit truc qui fait toute la différence…" />
+          </div>
+          <button type="submit" class="btn-publish" id="pubBtn">Publier la recette →</button>
+          <p class="form-note">En publiant, vous acceptez nos <a href="#" style="color:var(--ember)">Conditions d'utilisation</a>. Votre recette sera visible par toute la communauté.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NEWSLETTER ═══════════ -->
+<section class="newsletter-section">
+  <div class="nl-inner">
+    <div class="nl-badge">📬 Newsletter hebdomadaire</div>
+    <h2 class="nl-title">Ne ratez aucune <em>nouvelle recette</em></h2>
+    <p class="nl-desc">Chaque dimanche matin, recevez les 5 meilleures recettes de la semaine, une astuce de chef et les résultats de nos concours directement dans votre boîte mail.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="votre@email.com" id="nlEmail" />
+      <button class="nl-btn" onclick="subscribe()">S'abonner</button>
+    </div>
+    <div class="nl-perks">
+      <span class="nl-perk">✓ 100% gratuit</span>
+      <span class="nl-perk">✓ Sans spam</span>
+      <span class="nl-perk">✓ Désinscription en 1 clic</span>
+      <span class="nl-perk">✓ +28 000 abonnés</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#">Cuisine<em>AZ</em></a>
+        <p class="footer-desc">La plateforme de partage de recettes de la communauté francophone. Plus de 12 000 recettes, un générateur IA, et une communauté passionnée qui grandit chaque jour.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Recettes</div>
+        <div class="footer-links">
+          <a href="#">Toutes les recettes</a>
+          <a href="#">Recettes du jour</a>
+          <a href="#">Tendances</a>
+          <a href="#">Cuisine du Monde</a>
+          <a href="#">Recettes IA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Communauté</div>
+        <div class="footer-links">
+          <a href="#">S'inscrire</a>
+          <a href="#">Publier une recette</a>
+          <a href="#">Concours</a>
+          <a href="#">Forum</a>
+          <a href="#">Top membres</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">À propos</div>
+        <div class="footer-links">
+          <a href="#">Qui sommes-nous</a>
+          <a href="#">Contact</a>
+          <a href="#">Partenariats</a>
+          <a href="#">Mentions légales</a>
+          <a href="#">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 CuisineAZ.com — Tous droits réservés</div>
+      <div class="footer-socials">
+        <a class="footer-social" href="#">📘</a>
+        <a class="footer-social" href="#">📸</a>
+        <a class="footer-social" href="#">🐦</a>
+        <a class="footer-social" href="#">▶️</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL BAR ── */
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('scroll-bar').style.width=p+'%';
+});
+
+/* ── FILTER CHIPS ── */
+const chips=document.querySelectorAll('.fchip');
+const activeFilters=new Set(['rapide']);
+chips.forEach(c=>{
+  c.addEventListener('click',()=>{
+    const f=c.dataset.f;
+    if(activeFilters.has(f)){activeFilters.delete(f);c.classList.remove('on');}
+    else{activeFilters.add(f);c.classList.add('on');}
+  });
+});
+
+/* ── COUNTDOWN ── */
+const target=new Date('2026-06-01T00:00:00');
+function tick(){
+  const diff=target-new Date();
+  if(diff<0)return;
+  const d=Math.floor(diff/864e5),
+        h=Math.floor((diff%864e5)/36e5),
+        m=Math.floor((diff%36e5)/6e4),
+        s=Math.floor((diff%6e4)/1e3);
+  document.getElementById('t-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('t-hrs').textContent=String(h).padStart(2,'0');
+  document.getElementById('t-min').textContent=String(m).padStart(2,'0');
+  document.getElementById('t-sec').textContent=String(s).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+/* ── AI GENERATOR ── */
+async function genRecipe(){
+  const btn=document.getElementById('genBtn');
+  const result=document.getElementById('aiResult');
+  const content=document.getElementById('aiContent');
+  const ing=document.getElementById('ing').value.trim();
+  const persons=document.getElementById('sel-persons').value;
+  const time=document.getElementById('sel-time').value;
+  const level=document.getElementById('sel-level').value;
+  const filters=[...activeFilters].join(', ');
+
+  const prompt=ing
+    ?`Ingrédients disponibles : ${ing}. Contraintes : ${filters}. Portions : ${persons}. Temps : ${time}. Niveau : ${level}.`
+    :`Propose une belle recette. Style : ${filters||'recette de saison'}. Portions : ${persons}. Temps : ${time}. Niveau : ${level}.`;
+
+  btn.disabled=true;btn.textContent='⏳ Génération en cours…';
+  result.classList.add('show');
+  content.innerHTML=`<div class="ai-loader"><div class="dots"><span></span><span></span><span></span></div> Claude cuisine votre recette…</div>`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:`Tu es un chef cuisinier étoilé. Génère une recette complète en français. Réponds UNIQUEMENT avec un objet JSON valide (aucun texte avant ou après, pas de backticks) :
+{"titre":"...","temps":"...","difficulte":"Facile|Intermédiaire|Expert","portions":"X personnes","ingredients":["200g de ...","..."],"etapes":["Préchauffer ...","..."],"conseil":"Astuce du chef..."}`,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data=await res.json();
+    const text=data.content?.map(b=>b.text||'').join('')||'';
+    let r;
+    try{r=JSON.parse(text.replace(/```json|```/g,'').trim());}
+    catch{content.innerHTML=`<div class="res-body">${text}</div>`;return;}
+
+    content.innerHTML=`
+      <div class="res-title">${r.titre}</div>
+      <div class="res-tags">
+        <span class="res-tag rt-time">⏱ ${r.temps}</span>
+        <span class="res-tag rt-diff">${r.difficulte}</span>
+        <span class="res-tag rt-serv">👥 ${r.portions}</span>
+      </div>
+      <div class="res-section-title">Ingrédients</div>
+      <div class="res-body">${r.ingredients.map(i=>`• ${i}`).join('\n')}</div>
+      <div class="res-section-title">Préparation</div>
+      <div class="res-body">${r.etapes.map((e,i)=>`${i+1}. ${e}`).join('\n')}</div>
+      ${r.conseil?`<div class="res-tip"><strong>💡 Conseil du chef :</strong> ${r.conseil}</div>`:''}
+    `;
+  }catch(e){
+    content.innerHTML=`<div class="res-body" style="color:#F08060;">Erreur lors de la génération. Vérifiez votre connexion et réessayez.</div>`;
+  }finally{
+    btn.disabled=false;btn.innerHTML='✦ Générer une nouvelle recette';
+  }
+}
+document.getElementById('ing').addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='Enter')genRecipe();});
+
+/* ── SUBMIT FORM ── */
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('pubBtn');
+  btn.textContent='✓ Recette publiée avec succès !';
+  btn.style.background='var(--sage)';
+  setTimeout(()=>{btn.textContent='Publier la recette →';btn.style.background='';e.target.reset();},4000);
+}
+
+/* ── NEWSLETTER ── */
+function subscribe(){
+  const el=document.getElementById('nlEmail');
+  if(!el.value.includes('@')){el.style.borderColor='#E24B4A';return;}
+  el.style.borderColor='';
+  el.value='';
+  el.placeholder='✓ Merci ! Vous êtes abonné(e).';
+  setTimeout(()=>{el.placeholder='votre@email.com';},4000);
+}
+
+/* ── NAV ACTIVE ── */
+document.querySelectorAll('.nav-tag').forEach(t=>{
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.nav-tag').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+/* ── SAVE TOGGLE ── */
+document.querySelectorAll('.rcard-save').forEach(b=>{
+  b.addEventListener('click',e=>{
+    e.stopPropagation();
+    b.textContent=b.textContent==='🤍'?'❤️':'🤍';
+  });
+});
+</script>
+</body>
+</html>
