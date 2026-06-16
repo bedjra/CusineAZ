@@ -1675,3 +1675,31 @@ function handleSubmit(e){
   setTimeout(()=>{btn.textContent='Publier la recette →';btn.style.background='';e.target.reset();},4000);
 }
 
+/* ── NEWSLETTER ── */
+function subscribe(){
+  const el=document.getElementById('nlEmail');
+  if(!el.value.includes('@')){el.style.borderColor='#E24B4A';return;}
+  el.style.borderColor='';
+  el.value='';
+  el.placeholder='✓ Merci ! Vous êtes abonné(e).';
+  setTimeout(()=>{el.placeholder='votre@email.com';},4000);
+}
+
+/* ── NAV ACTIVE ── */
+document.querySelectorAll('.nav-tag').forEach(t=>{
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.nav-tag').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+/* ── SAVE TOGGLE ── */
+document.querySelectorAll('.rcard-save').forEach(b=>{
+  b.addEventListener('click',e=>{
+    e.stopPropagation();
+    b.textContent=b.textContent==='🤍'?'❤️':'🤍';
+  });
+});
+</script>
+</body>
+</html>
