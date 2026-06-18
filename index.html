@@ -1666,14 +1666,6 @@ async function genRecipe(){
 }
 document.getElementById('ing').addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='Enter')genRecipe();});
 
-/* ── SUBMIT FORM ── */
-function handleSubmit(e){
-  e.preventDefault();
-  const btn=document.getElementById('pubBtn');
-  btn.textContent='✓ Recette publiée avec succès !';
-  btn.style.background='var(--sage)';
-  setTimeout(()=>{btn.textContent='Publier la recette →';btn.style.background='';e.target.reset();},4000);
-}
 
 /* ── NEWSLETTER ── */
 function subscribe(){
